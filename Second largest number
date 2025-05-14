@@ -1,0 +1,31 @@
+def second_largest(arr):
+  n= len(arr)
+  if n<2:
+    return -1
+  first=second=float('-inf')
+  for num in arr:
+    if num > first:
+      second=first
+      first=num
+    elif num>second and num !=first:
+         second=num
+  if second==float('-inf'):
+    return -1
+  else:
+    return second
+if __name__=='__main__':
+  arr=[12,35,1,10,34,1,7]
+  print(second_largest(arr))
+
+#2nd Approach
+def sec_largest(arr):
+  n=len(arr)
+  arr.sort()
+  for i in range(n-2,-1,-1):
+    if arr[i]!=arr[n-1]:
+      return arr[i]
+  return -1    
+if __name__=='__main__':
+  arr=[12,35,1,10,34,1,7]
+  print(second_largest(arr))
+  
