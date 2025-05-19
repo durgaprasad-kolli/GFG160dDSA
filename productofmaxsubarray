@@ -1,0 +1,17 @@
+def maxproduct(arr):
+n=len(arr)
+		maxprod=float('-inf')
+		ltr=1
+		rtl=1
+		for i in range(n):
+		    if ltr==0:
+		        ltr=1
+		    if rtl==0:
+		        rtl=1
+		    ltr*=arr[i]
+		    j=n-i-1
+		    rtl*=arr[j]
+		    maxprod=max(ltr,rtl,maxprod)
+	    return maxprod
+arr = [-2, 6, -3, -10, 0, 2]
+print(maxProduct(arr))
