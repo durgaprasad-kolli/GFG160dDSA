@@ -1,0 +1,20 @@
+def circularSubarraySum(arr):
+    ##Your code here
+    totalsum=0
+    currmaxsum=0
+    currminsum=0
+    maxsum=arr[0]
+    minsum=arr[0]
+    for i in range(len(arr)):
+        currmaxsum=max(currmaxsum+arr[i],arr[i])
+        maxsum=max(maxsum,currmaxsum)
+        currminsum=min(currminsum+arr[i],arr[i])
+        minsum=min(minsum,currminsum)
+        totalsum +=arr[i]
+    normalsum=maxsum
+    circularsum=totalsum-minsum
+    if minsum==totalsum:
+        return normalsum
+    return max(normalsum,circularsum)
+arr = [8, -8, 9, -9, 10, -11, 12]
+print(circularSubarraySum(arr))
