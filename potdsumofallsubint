@@ -1,0 +1,16 @@
+def sum_of_substrings(s):
+    n = len(s)
+    total_sum = 0
+    prev_sum = 0
+
+    for i in range(n):
+        num = int(s[i])
+        curr_sum = prev_sum * 10 + num * (i + 1)
+        total_sum += curr_sum
+        prev_sum = curr_sum
+
+    return total_sum
+
+# Test examples
+print(sum_of_substrings("6759"))  # Output: 8421
+print(sum_of_substrings("421"))   # Output: 491
