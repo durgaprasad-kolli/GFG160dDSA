@@ -1,0 +1,28 @@
+class Solution:
+	def pythagoreanTriplet(self, arr):
+    	# code here
+        squares = set()
+        for num in arr:
+             squares.add(num * num)
+    
+        n = len(arr)
+    
+        for i in range(n):
+            for j in range(i + 1, n):
+                a2 = arr[i] * arr[i]
+                b2 = arr[j] * arr[j]
+                if a2 + b2 in squares:
+                # Make sure c is at a different index than i and j
+                    c = int((a2 + b2) ** 0.5)
+                    if c * c == a2 + b2 and arr.count(c) >= 1:
+                    # Check all indexes are different (not same value)
+                        count_c = arr.count(c)
+                        if c != arr[i] and c != arr[j]:
+                             return True
+                        elif c == arr[i] and c == arr[j] and count_c >= 3:
+                             return True
+                        elif (c == arr[i] or c == arr[j]) and count_c >= 2:
+                             return True
+        return False
+
+    	
