@@ -1,0 +1,43 @@
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+       
+        
+class Solution:
+    def sortedInsert(self, head, data):
+        new_node = Node(data)
+
+        # Case 1: Empty list
+        if not head:
+            new_node.next = new_node
+            return new_node
+
+        current = head
+
+        while True:
+            # Case 2: Insertion point between current and next
+            if current.data <= data <= current.next.data:
+                break
+
+            # Case 3: Rotation point (from max to min)
+            if current.data > current.next.data:
+                if data >= current.data or data <= current.next.data:
+                    break
+
+            current = current.next
+
+            # Completed full circle
+            if current == head:
+                break
+
+        # Insert the new node
+        new_node.next = current.next
+        current.next = new_node
+
+        # Ensure head is updated if needed
+        if data < head.data:
+            return new_node
+        else:
+            return head
