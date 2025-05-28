@@ -1,0 +1,34 @@
+class Solution:    
+    def ValidCorner(self,mat): 
+        # Code here 
+        n = len(mat)
+        m = len(mat[0])
+
+        col_pairs_seen = {}
+
+        for r in range(n):
+           
+            ones_in_row = []
+            for c in range(m):
+                if mat[r][c] == 1:
+                    ones_in_row.append(c)
+
+            
+            num_ones = len(ones_in_row)
+            for i in range(num_ones):
+                for j in range(i + 1, num_ones):
+                    c1 = ones_in_row[i]
+                    c2 = ones_in_row[j]
+
+                    pair = (c1, c2)
+
+                 
+                    if pair in col_pairs_seen:
+                       
+                        return True
+                    else:
+                     
+                        col_pairs_seen[pair] = r
+        
+       
+        return False
