@@ -1,0 +1,24 @@
+class Solution:
+    def countPairs(self, mat1, mat2, x):
+        n = len(mat1)
+        
+        # Flatten both matrices into 1D arrays
+        flat1 = [mat1[i][j] for i in range(n) for j in range(n)]
+        flat2 = [mat2[i][j] for i in range(n) for j in range(n)]
+        
+        # Initialize two pointers
+        i, j = 0, len(flat2) - 1
+        count = 0
+        
+        while i < len(flat1) and j >= 0:
+            total = flat1[i] + flat2[j]
+            if total == x:
+                count += 1
+                i += 1
+                j -= 1
+            elif total < x:
+                i += 1
+            else:
+                j -= 1
+                
+        return count
